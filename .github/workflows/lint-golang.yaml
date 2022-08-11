@@ -33,12 +33,17 @@ jobs:
         with:
           go-version: '1.19.0'
 
+      # unitest and e2e, _test.go
+      - name: Check label of All test go
+        run: |
+          make check_test_label
+
       # ================= unitest
       - name: Run unitest
         id: unitest
         continue-on-error: true
         run: |
-          sudo make unitest-tests
+          make unitest-tests
 
       # - name: Upload Coverage Artifact
       #   if: ${{ steps.unitest.outcome == 'failure' }}
