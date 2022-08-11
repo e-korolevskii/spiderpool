@@ -265,7 +265,8 @@ check_test_label:
 .PHONY: unitest-tests
 unitest-tests: check_test_label
 	@echo "run unitest-tests"
-	@echo $(ls)
+	@ls
+	@echo "test"
 	$(QUIET) $(ROOT_DIR)/tools/scripts/ginkgo.sh   \
 		--cover --coverprofile=./coverage.out --covermode set  \
 		--json-report unitestreport.json \
