@@ -38,7 +38,7 @@ jobs:
         id: unitest
         continue-on-error: true
         run: |
-          make unitest-tests
+          sudo make unitest-tests
 
       # - name: Upload Coverage Artifact
       #   if: ${{ steps.unitest.outcome == 'failure' }}
