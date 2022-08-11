@@ -37,7 +37,6 @@ jobs:
       - name: Run unitest
         id: unitest
         continue-on-error: true
-        debug: true
         run: |
           make unitest-tests
 
