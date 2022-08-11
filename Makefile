@@ -266,7 +266,7 @@ check_test_label:
 unitest-tests: check_test_label
 	@echo "run unitest-tests"
 	@echo "__________________________________________________________"
-	@ls
+	@echo "$PATH"
 	@echo "__________________________________________________________"
 	$(QUIET) $(ROOT_DIR)/tools/scripts/ginkgo.sh   \
 		--cover --coverprofile=./coverage.out --covermode set  \
