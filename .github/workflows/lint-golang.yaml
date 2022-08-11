@@ -28,16 +28,19 @@ jobs:
   unitest:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19.0
-
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           persist-credentials: false
           ref: ${{ needs.filter_changes.outputs.ref }}
+
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.19.0"
+
+      - name: Checkout ENV go version
+        run: go version
 
       # unitest and e2e, _test.go
       - name: Check label of All test go
@@ -49,7 +52,7 @@ jobs:
         id: unitest
         continue-on-error: true
         run: |
-          make unitest-tests
+          sudo make unitest-tests
 
       - name: Upload Coverage Artifact
         if: ${{ steps.unitest.outcome == 'failure' }}
