@@ -67,19 +67,6 @@ jobs:
           path: unitestreport.json
           retention-days: 1
 
-      # ============= upload coverage report
-      - name: Upload to Codecov
-        if: ${{ steps.unitest.outcome != 'failure' }}
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          directory: "./"
-          files: "coverage.out"
-          flags: unittests
-          name: my-codecov-umbrella
-          fail_ci_if_error: true
-          verbose: true
-          token: ${{ secrets.CODECOV_TOKEN }}
-
       - name: Result
         if: ${{ steps.unitest.outcome == 'failure' }}
         run: |
